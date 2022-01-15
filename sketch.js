@@ -60,10 +60,11 @@ mainCyclist.addAnimation("SahilRunning",mainRacerImg1);
 mainCyclist.scale=0.07;
 
 //set collider for mainCyclist
-mainCyclist.setCollider("rectangle", 0, 0, 40, 1405);
-//mainCyclist.setCollider("rectangle",0,0,40,40); //main.
+mainCyclist.setCollider("rectangle", 0, 0, 40, 1405); //main.
+//mainCyclist.setCollider("rectangle", 0, 390, 40, 605); //can go up can't down.
+//mainCyclist.setCollider("rectangle",0,0,40,40); 
 //mainCyclist.setCollider("rectangle",0,0,40,40,50);
-//mainCyclist.debug = true;
+mainCyclist.debug = true;
 hitbox = createSprite(70, 150);
 hitbox.setCollider("rectangle",0,0,40,40);
 hitbox.visible = false;
