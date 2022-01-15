@@ -19,6 +19,8 @@ var highdistance = 0;
 var gameOver, restart;
 var obstacleWin = false;
 
+var hitbox;
+
 function preload(){
   pathImg = loadImage("Road.png");
   mainRacerImg1 = loadAnimation("mainPlayer1.png","mainPlayer2.png");
@@ -58,9 +60,14 @@ mainCyclist.addAnimation("SahilRunning",mainRacerImg1);
 mainCyclist.scale=0.07;
 
 //set collider for mainCyclist
-//mainCyclist.debug = true;
-mainCyclist.setCollider("rectangle",0,0,40,40);
+mainCyclist.setCollider("rectangle", 0, 0, 40, 1405);
+//mainCyclist.setCollider("rectangle",0,0,40,40); //main.
 //mainCyclist.setCollider("rectangle",0,0,40,40,50);
+//mainCyclist.debug = true;
+hitbox = createSprite(70, 150);
+hitbox.setCollider("rectangle",0,0,40,40);
+hitbox.visible = false;
+//hitbox.debug = true;
 
 gameOver = createSprite(650,150);
 gameOver.addImage(gameOverImg);
@@ -84,7 +91,10 @@ edges = createEdgeSprites();
 
 function draw() {
   background(0);
-  //console.log(hitbox1.y);
+  hitbox.x = mainCyclist.x;
+  hitbox.y = mainCyclist.y;
+  console.log(hitbox.x);
+  console.log(mainCyclist.x)
   //console.log(World.mouseY);
   drawSprites();
   textSize(20);
@@ -163,41 +173,41 @@ function draw() {
     }
   }
   
-   if(pinkCG.isTouching(mainCyclist)){
+   if(pinkCG.isTouching(hitbox)){
      gameState = END;
      player1.velocityY = 0;
      player1.addAnimation("opponentPlayer1",oppPink2Img);
     }
     
-    if(yellowCG.isTouching(mainCyclist)){
+    if(yellowCG.isTouching(hitbox)){
       gameState = END;
       player2.velocityY = 0;
       player2.addAnimation("opponentPlayer2",oppYellow2Img);
     }
     
-    if(redCG.isTouching(mainCyclist)){
+    if(redCG.isTouching(hitbox)){
       gameState = END;
       player3.velocityY = 0;
       player3.addAnimation("opponentPlayer3",oppRed2Img);
     }
-    if(cyanCG.isTouching(mainCyclist)){
+    if(cyanCG.isTouching(hitbox)){
       gameState = END;
       player4.velocityY = 0;
       player4.addAnimation("opponentPlayer12",oppCyan2Img);
     }
 
-    if(obstacles1G.isTouching(mainCyclist)){
+    if(obstacles1G.isTouching(hitbox)){
       gameState = END;
       obstacleWin = true;
     }
 
-    if(obstacles2G.isTouching(mainCyclist)){
+    if(obstacles2G.isTouching(hitbox)){
       gameState = END;
       mainCyclist.visible = false;
       obstacleWin = true;
     }
 
-    if(obstacles3G.isTouching(mainCyclist)){
+    if(obstacles3G.isTouching(hitbox)){
       gameState = END;
       obstacleWin = true;
     }
@@ -218,8 +228,8 @@ function draw() {
       obstacles3G.destroyEach();
     }*/
     textSize(20);
-    fill(255);
-    text("Press Up Arrow to Restart the game!", 500,200);
+    fill('cyan');
+    text("Pressione A Seta Para Cima Para Reiniciar O Jogo!", 440,200);
   
     path.velocityX = 0;
     mainCyclist.velocityY = 0;
