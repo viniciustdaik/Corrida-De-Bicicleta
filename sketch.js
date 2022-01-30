@@ -48,9 +48,9 @@ function preload(){
 
 function setup(){
   
-createCanvas(1200,300);
+createCanvas(windowWidth, windowHeight);//1200, 300
 // Moving background
-path=createSprite(100,150);
+path=createSprite(width/2,height/2);
 path.addImage(pathImg);
 path.velocityX = -5;
 
@@ -70,7 +70,7 @@ hitbox.setCollider("rectangle",0,0,40,40);
 hitbox.visible = false;
 //hitbox.debug = true;
 
-gameOver = createSprite(650,150);
+gameOver = createSprite(width/2,height/2);
 gameOver.addImage(gameOverImg);
 gameOver.scale = 0.8;
 gameOver.visible = false;
@@ -94,14 +94,14 @@ function draw() {
   background(0);
   hitbox.x = mainCyclist.x;
   hitbox.y = mainCyclist.y;
-  console.log(hitbox.x);
-  console.log(mainCyclist.x)
+  //console.log(hitbox.x);
+  //console.log(mainCyclist.x)
   //console.log(World.mouseY);
   drawSprites();
   textSize(20);
   fill('gold');
-  text("Distância: "+ distance,900,30);
-  text("Melhor Distância: "+ highdistance,900,50);
+  text("Distância: "+ distance,windowWidth-235,30);
+  text("Melhor Distância: "+ highdistance,windowWidth-235,50);
   if(cyanCG.isTouching(obstacles2G)){
     cyanCG.destroyEach();
   }
@@ -230,7 +230,7 @@ function draw() {
     }*/
     textSize(20);
     fill('cyan');
-    text("Pressione A Seta Para Cima Para Reiniciar O Jogo!", 440,200);
+    text("Pressione A Seta Para Cima Para Reiniciar O Jogo!", width/2-220,height/2+45);//440, 200
   
     path.velocityX = 0;
     mainCyclist.velocityY = 0;
@@ -267,7 +267,7 @@ function draw() {
 }
 
 function pinkCyclists(){
-        player1 =createSprite(1100,Math.round(random(50, 250)));
+        player1 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));
         player1.scale =0.06;
         player1.velocityX = -(6 + 2*distance/150);
         player1.addAnimation("opponentPlayer1",oppPink1Img);
@@ -276,7 +276,7 @@ function pinkCyclists(){
 }
 
 function yellowCyclists(){
-        player2 =createSprite(1100,Math.round(random(50, 250)));
+        player2 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));
         player2.scale =0.06;
         player2.velocityX = -(6 + 2*distance/150);
         player2.addAnimation("opponentPlayer2",oppYellow1Img);
@@ -285,7 +285,7 @@ function yellowCyclists(){
 }
 
 function redCyclists(){
-        player3 =createSprite(1100,Math.round(random(50, 250)));
+        player3 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));
         player3.scale =0.06;
         player3.velocityX = -(6 + 2*distance/150);
         player3.addAnimation("opponentPlayer3",oppRed1Img);
@@ -294,7 +294,7 @@ function redCyclists(){
 }
 
 function cyanCyclists(){
-  player4 =createSprite(1100,Math.round(random(50, 250)));
+  player4 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));
   player4.scale =0.06;
   player4.velocityX = -(6 + 2*distance/150);
   player4.addAnimation("opponentPlayer12",oppCyan1Img);
@@ -303,7 +303,7 @@ function cyanCyclists(){
 }
 
 function obstacles1(){
-  obstacle1 = createSprite(1100,Math.round(random(50, 250)))
+  obstacle1 = createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)))
   obstacle1.addImage("obstacle1", obstacle1img);
   obstacle1.scale = 0.1;
   obstacle1.velocityX = -(7 + 2*distance/150);
@@ -315,7 +315,7 @@ function obstacles1(){
 }
 
 function obstacles2(){
-  obstacle2 = createSprite(1100,Math.round(random(50, 250)))
+  obstacle2 = createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)))
   obstacle2.addImage("obstacle2", obstacle2img);
   obstacle2.scale = 0.1;
   obstacle2.velocityX = -(7 + 2*distance/150);
@@ -328,7 +328,7 @@ function obstacles2(){
 }
 
 function obstacles3(){
-  obstacle3 = createSprite(1100,Math.round(random(50, 250)))
+  obstacle3 = createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)))//1100, (random)50, 250
   obstacle3.addImage("obstacle3", obstacle3img);
   obstacle3.scale = 0.1;
   obstacle3.velocityX = -(7 + 2*distance/150);
@@ -349,7 +349,7 @@ function reset(){
   if(distance>highdistance){
     highdistance = distance;
   }
-
+  
   pinkCG.destroyEach();
   yellowCG.destroyEach();
   redCG.destroyEach();
