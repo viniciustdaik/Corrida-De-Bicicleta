@@ -100,6 +100,7 @@ function draw() {
   drawSprites();
   textSize(20);
   fill('gold');
+  stroke('green')
   text("Distância: "+ distance,windowWidth-235,30);
   text("Melhor Distância: "+ highdistance,windowWidth-235,50);
   if(cyanCG.isTouching(obstacles2G)){
@@ -228,9 +229,10 @@ function draw() {
       obstacles2G.destroyEach();
       obstacles3G.destroyEach();
     }*/
-    textSize(20);
+    textSize(23);
     fill('cyan');
-    text("Pressione A Seta Para Cima Para Reiniciar O Jogo!", width/2-220,height/2+45);//440, 200
+    stroke('lightblue');
+    text("Pressione A Seta Para Cima Para Reiniciar O Jogo!", width/2-240 ,height/2+45);//440, 200
   
     path.velocityX = 0;
     mainCyclist.velocityY = 0;
