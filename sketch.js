@@ -232,7 +232,7 @@ function draw() {
     textSize(23);
     fill('cyan');
     stroke('lightblue');
-    text("Pressione A Seta Para Cima Para Reiniciar O Jogo!", width/2-240 ,height/2+45);//440, 200
+    text("Clique/Toque Para Tentar De Novo!", width/2-240 ,height/2+45);//440, 200
   
     path.velocityX = 0;
     mainCyclist.velocityY = 0;
@@ -262,14 +262,24 @@ function draw() {
     obstacles3G.setLifetimeEach(-1);
     obstacles3G.setVelocityXEach(0);
 
-     if(keyDown("UP_ARROW")) {
-       reset();
-     }
-}
+    if(mousePressedOver(road)
+    ||mousePressedOver(mainCyclist)
+    ||mousePressedOver(cyanCG)
+    ||mousePressedOver(cyanCG)
+    ||mousePressedOver(redCG)
+    ||mousePressedOver(pinkCG)
+    ||mousePressedOver(obstacles1G)
+    ||mousePressedOver(obstacles2G)
+    ||mousePressedOver(obstacles3G)
+    ||touches.length > 0) {
+      reset();
+      touches = [];
+    }
+  }
 }
 
 function pinkCyclists(){
-        player1 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));
+        player1 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));//1100, (random)50, 250
         player1.scale =0.06;
         player1.velocityX = -(6 + 2*distance/150);
         player1.addAnimation("opponentPlayer1",oppPink1Img);
@@ -278,7 +288,7 @@ function pinkCyclists(){
 }
 
 function yellowCyclists(){
-        player2 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));
+        player2 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));//1100, (random)50, 250
         player2.scale =0.06;
         player2.velocityX = -(6 + 2*distance/150);
         player2.addAnimation("opponentPlayer2",oppYellow1Img);
@@ -287,7 +297,7 @@ function yellowCyclists(){
 }
 
 function redCyclists(){
-        player3 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));
+        player3 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));//1100, (random)50, 250
         player3.scale =0.06;
         player3.velocityX = -(6 + 2*distance/150);
         player3.addAnimation("opponentPlayer3",oppRed1Img);
@@ -296,7 +306,7 @@ function redCyclists(){
 }
 
 function cyanCyclists(){
-  player4 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));
+  player4 =createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)));//1100, (random)50, 250
   player4.scale =0.06;
   player4.velocityX = -(6 + 2*distance/150);
   player4.addAnimation("opponentPlayer12",oppCyan1Img);
@@ -305,7 +315,7 @@ function cyanCyclists(){
 }
 
 function obstacles1(){
-  obstacle1 = createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)))
+  obstacle1 = createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)))//1100, (random)50, 250
   obstacle1.addImage("obstacle1", obstacle1img);
   obstacle1.scale = 0.1;
   obstacle1.velocityX = -(7 + 2*distance/150);
@@ -317,7 +327,7 @@ function obstacles1(){
 }
 
 function obstacles2(){
-  obstacle2 = createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)))
+  obstacle2 = createSprite(windowWidth+1100,Math.round(random(50, windowHeight-50)))//1100, (random)50, 250
   obstacle2.addImage("obstacle2", obstacle2img);
   obstacle2.scale = 0.1;
   obstacle2.velocityX = -(7 + 2*distance/150);
