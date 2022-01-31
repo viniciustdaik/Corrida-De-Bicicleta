@@ -51,7 +51,7 @@ function setup(){
 createCanvas(windowWidth, windowHeight);//1200, 300
 // Moving background
 path=createSprite(width/2,height/2);
-path.addImage(pathImg);
+path.addImage("pathimg", pathImg);
 path.velocityX = -5;
 
 //creating boy running
@@ -71,7 +71,7 @@ hitbox.visible = false;
 //hitbox.debug = true;
 
 gameOver = createSprite(width/2,height/2);
-gameOver.addImage(gameOverImg);
+gameOver.addImage("gameoverimg", gameOverImg);
 gameOver.scale = 0.8;
 gameOver.visible = false;
 //gameOver.debug = true;
@@ -214,7 +214,7 @@ function draw() {
       obstacleWin = true;
     }
     
-}else if (gameState === END) {
+} if (gameState === END) {
     gameOver.visible = true;
     if(mainCyclist.y>250){
       mainCyclist.y = 245;
@@ -262,7 +262,7 @@ function draw() {
     obstacles3G.setLifetimeEach(-1);
     obstacles3G.setVelocityXEach(0);
 
-    if(mousePressedOver(road)
+    if(mousePressedOver(path)
     ||mousePressedOver(mainCyclist)
     ||mousePressedOver(cyanCG)
     ||mousePressedOver(cyanCG)
