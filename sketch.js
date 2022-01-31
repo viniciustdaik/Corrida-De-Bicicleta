@@ -231,7 +231,7 @@ function draw() {
     }*/
     textSize(23);
     fill('cyan');
-    stroke('lightblue');
+    stroke('stroke');
     text("Clique/Toque Para Tentar De Novo!", width/2-240 ,height/2+45);//440, 200
   
     path.velocityX = 0;
